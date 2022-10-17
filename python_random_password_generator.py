@@ -1,50 +1,101 @@
 import secrets
 import string
 import os
+from time import sleep
+import webbrowser
+import sys
 
+
+with open("nggyu.txt", "r") as f:
+    i = f.read()
 
 def new_line():
     print("\n")
+
+count = 0
+count_word = 0
+
+bye = False
 
 new_line()
 # Defining how long should the generated password be
 # 25 is usually the maximum allowed in most website
 password_length = int()
 while password_length < 10 or password_length > 25 :
-    password_length = int(input("How long would you like the password to be? : "))
-    if password_length == 0 :
-        print("I asked you how many characters you want, not how many friends you have...")
-        new_line()
-    elif password_length > 0 and password_length < 10:
-        print("Minimum allowed is 10")
-        new_line()
-    elif password_length > 25 and password_length <= 100:
-        print("Maximum allowed is 25")
-        new_line()
-    elif password_length > 100 or password_length < 0 :
-        
-        import tkinter 
-        import sys
-        
-        window = tkinter.Tk()  
-        window.title("Your punishment")
-        window.geometry("300x50")
+    password_length = input("How long would you like the password to be? : ")
+    try :
+        password_length = int(password_length)
+        if password_length == 0 :
+            print("I asked you how many characters you want, not how many friends you have...")
+            new_line()
+        elif password_length > 0 and password_length < 10:
+            print("Minimum allowed is 10")
+            new_line()
+        elif password_length > 25 and password_length <= 100:
+            print("Maximum allowed is 25")
+            new_line()
+        elif password_length > 100 or password_length < 0 :
+            count +=1
+            if count > 4 :
+                print("You know what, i'm done with you.")
+                sleep(3)
+                link = "https://shoutsfromtheabyss.files.wordpress.com/2013/06/bye-homer.jpg"
+                webbrowser.open(link)
+                sleep(1)
+                bye = True
+                exit()
 
-        def func():
-            with open("nggyu.txt", "r") as f:
-                i = f.read()
-                print(i)
-         
-        btn = tkinter.Button(window, text="Click here", command=func) 
-        btn.pack() 
+            if count > 3 :
+                print("Well, you asked for this...")
+                sleep(3)
+                link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                webbrowser.open(link)
+                sleep(1)
+                new_line()
+                print("Now please get serious and enter any number between 10 and 25. \nNo more messing around. Okay?")
+                new_line()
 
-        window.mainloop()
-        
-        print("""now please get serious and enter any number between 10 and 25.
-        No more messing around. Okay?""")
-        new_line()
+            elif count > 2 :
+                print("Oh you gotta be kidding me!")
+                new_line()
 
-# TODO = catch exception if user enters other than integer or even empty in input
+            elif count > 1 :
+                print("I am warning you...")
+                new_line()
+
+            else :
+                print("Plese enter any number between 10 and 25.")
+                new_line()
+            
+
+    except :
+        if bye == True:
+            exit()
+        else :
+            count_word +=1
+            if count_word > 3 :
+                link = "https://media.makeameme.org/created/fuck-you-hoe-353f50e1de.jpg"
+                webbrowser.open(link)
+                sleep(1)
+                exit()
+            elif count_word > 3 :
+                print("LEAVE ME ALONEEEEEEEEE")
+                password_length = int()
+                new_line()
+            elif count_word > 2 :
+                print("oh...FUCK OFF!")
+                password_length = int()
+                new_line()
+            elif count_word > 1 :
+                print("Why is it so hard for you ? \nENTER A NUMBER! \nN-U-M-B-E-R")
+                password_length = int()
+                new_line()
+            else :
+                print("PLEASE ENTER A NUMBER")
+                password_length = int()
+                new_line()
+                
+
 
 
 big_letters = string.ascii_uppercase
@@ -84,9 +135,6 @@ new_line()
 print(f"""You can go to :
     {directory}/generated_password.txt
     \t to see all of your generated passwords!""")
-
-
-
 
 
 
